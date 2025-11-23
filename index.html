@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-IN" dir="ltr">
+  <head>
+    <title>Do you wanna go out with me?</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+        <div id="ask" class="container">
+            <div >
+                <h1 class = "header_text" style="color: rgb(255, 124, 189);">Чи миний эхний хүслийг биелүүлэхдээ бэлэн үү?</h1>
+            </div>
+            <div class="gif_container">
+                <img src="image/ask2.gif" alt="Cute animated illustration">
+            </div>
+            <div class = "buttons">
+                <button class="btn" id = "yesButton" onclick="nextPage()">Тийм</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Үгүй</button>
+            </div>
+            <video id="novideo" width="0" height="0" controls>
+                <source src="image/SadMoment.mp4" 
+                   type="video/mp4">
+            </video>
+        </div>
+        <div id="ans" class="container">
+            <div >
+                <h1 class = "header_text" style="color: rgb(255, 124, 189);">Баяр хүргэе! Чи надтай болзох эрх хожлоо</h1>
+            </div>
+            <div class="gif_container">
+                <img src="image/ans2.gif" alt="Cute animated illustration">
+            </div>
+            <div >
+                <h1 style="color: rgb(255, 124, 189);">Хугацаа: 2025.11.24-ний өдөр 11:30 цагт</h1>
+                <h1  style="color: rgb(255, 124, 189);">Байршил: МУИС-ийн номын сан</h1>
+            </div>
+            <div class="gif_container qrimage">
+                <img src="image/bnjmn_benja_qr.png" onclick="window.open('https://www.instagram.com/bnjmn_benja')" alt="Insta Profile QR code">
+            </div>
+            <video id="ansvideo" width="0" height="0" controls>
+                <source src="image/KidsCheering.mp4" 
+                   type="video/mp4">
+            </video>
+        </div>
+    </body> 
+    <script>
+
+        var debounce = function(fn, t = 1000) {
+            let timer;
+            return function(...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => fn(...args), t);
+            }
+        };
+
+
+        function playAudio()
+        {
+            document.getElementById('novideo').play();
+        }
+
+        function nextPage() {
+            //window.location.href = "yes.html";
+            document.getElementById('ans').style.display = 'block';
+            document.getElementById('ask').style.display = 'none';
+            document.getElementById('novideo').pause();
+            document.getElementById('ansvideo').play();
+        }
+
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth);
+            var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight);
+            document.getElementById('noButton').style.left = `${x}px`;
+            document.getElementById('noButton').style.top = `${y}px`;
+            playAudio();
+        }
+
+    </script> 
+</html>
